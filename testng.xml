@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Login Test Suite">
     <test name="Login Tests">
-        <parameter name="paramEmail" value="john@example.com"/>
-        <parameter name="paramPassword" value="password123"/>
 
         <classes>
-            <class name="tests.LoginTest"/>
+            <class name="tests.RegisterTest"/>
         </classes>
     </test>
 
-    <test name="Parallel Tests" parallel="methods" thread-count="3">
-        <classes>
-            <class name="tests.LoginTest"></class>
-        </classes>
-    </test>
 </suite>
