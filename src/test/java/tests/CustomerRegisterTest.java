@@ -6,13 +6,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.RegisterPage;
+import pages.CustomerRegisterPage;
 import utils.ConfigReader;
 import java.time.Duration;
 
-public class RegisterTest {
+public class CustomerRegisterTest {
     private WebDriver driver;
-    private RegisterPage registerPage;
+    private CustomerRegisterPage registerPage;
 
     @BeforeMethod
     public void setUp() {
@@ -40,7 +40,7 @@ public class RegisterTest {
         driver.get(ConfigReader.getProperty("base.url"));
 
         // Initialize page object
-        registerPage = new RegisterPage(driver);
+        registerPage = new CustomerRegisterPage(driver);
     }
 
     @Test(priority = 1, description = "Test successful Register with valid credentials")

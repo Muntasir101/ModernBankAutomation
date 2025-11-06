@@ -7,14 +7,14 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.LoginPage;
+import pages.CustomerLoginPage;
 import utils.ConfigReader;
 
 import java.time.Duration;
 
-public class LoginTest {
+public class CustomerLoginTest {
     private WebDriver driver;
-    private LoginPage loginPage;
+    private CustomerLoginPage loginPage;
 
     @BeforeMethod
     public void setUp() {
@@ -42,7 +42,7 @@ public class LoginTest {
         driver.get(ConfigReader.getProperty("base.url"));
 
         // Initialize page object
-        loginPage = new LoginPage(driver);
+        loginPage = new CustomerLoginPage(driver);
     }
 
     @Test(priority = 1, description = "Test successful login with valid credentials")
