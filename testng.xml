@@ -11,13 +11,7 @@
 
     <test name="Parallel Tests" parallel="methods" thread-count="3">
         <classes>
-            <class name="tests.LoginTest">
-                <methods>
-                    <include name="testSuccessfulLogin"/>
-                    <include name="testLoginWithInvalidUsername"/>
-                    <include name="testLoginWithInvalidPassword"/>
-                </methods>
-            </class>
+            <class name="tests.LoginTest"></class>
         </classes>
     </test>
 </suite>
