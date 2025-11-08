@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Login Test Suite">
-    <test name="Login Tests">
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="E2E Suite" parallel="false">
 
+    <test name="Banking E2E Tests">
         <classes>
-            <class name = "tests.DepositFundsTest"/>
-
+            <class name="tests.CustomerRegisterTest"/>
+            <class name="tests.CustomerLoginTest"/>
+            <class name="tests.DepositFundsTest"/>
+            <class name="tests.WithdrawFundsTest"/>
         </classes>
     </test>
 

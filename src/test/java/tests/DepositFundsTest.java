@@ -50,7 +50,9 @@ public class DepositFundsTest {
     }
 
     @Test(priority = 1, description = "Test login and deposit funds in one flow")
-    public void testLoginAndDeposit() {
+    public void testDeposit() {
+
+
         // Login first
         String email = ConfigReader.getProperty("email");
         String password = ConfigReader.getProperty("password");

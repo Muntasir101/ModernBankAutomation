@@ -1,4 +1,5 @@
 package tests;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -6,13 +7,16 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.CustomerRegisterPage;
+import pages.CustomerLoginPage;
+import pages.WithdrawFundsPage;
 import utils.ConfigReader;
+
 import java.time.Duration;
 
-public class CustomerRegisterTest {
+public class WithdrawFundsTest {
     private WebDriver driver;
-    private CustomerRegisterPage registerPage;
+    private CustomerLoginPage loginPage;
+    private WithdrawFundsPage withdrawFundsPage;
 
     @BeforeMethod
     public void setUp() {
@@ -36,28 +40,26 @@ public class CustomerRegisterTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        // Navigate to register page
+        // Navigate to login page
         driver.get(ConfigReader.getProperty("base.url"));
 
-        // Initialize page object
-        registerPage = new CustomerRegisterPage(driver);
+        // Initialize page objects
+        loginPage = new CustomerLoginPage(driver);
+
+        withdrawFundsPage = new WithdrawFundsPage(driver);
     }
 
-    @Test(priority = 1, description = "Test successful Register with valid credentials")
-    public void testSuccessfulRegister() {
-        String baseEmail = ConfigReader.getProperty("email");
-        String uniqueEmail = baseEmail.split("@")[0]
-                + System.currentTimeMillis()
-                + "@" + baseEmail.split("@")[1];
-
+    @Test(priority = 1, description = "Test login and deposit funds in one flow")
+    public void testWithdraw() {
+        // Login first
+        String email = ConfigReader.getProperty("email");
         String password = ConfigReader.getProperty("password");
-        String fullName =  ConfigReader.getProperty("fullName");
-        String initialDepositAmount =  ConfigReader.getProperty("deposit_amount");
+        loginPage.login(email, password);
 
-        registerPage.register(fullName, uniqueEmail, password, initialDepositAmount);
-
-        // Verify successful register
-
+        // Then deposit funds
+        String amount = "100";
+        String description = "Test Description";
+        withdrawFundsPage.withdrawFunds(amount, description);
     }
 
     @AfterMethod
