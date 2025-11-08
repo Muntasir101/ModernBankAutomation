@@ -8,15 +8,15 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.CustomerLoginPage;
-import pages.DepositFundsPage;
+import pages.CustomerDepositFundsPage;
 import utils.ConfigReader;
 
 import java.time.Duration;
 
-public class DepositFundsTest {
+public class CustomerDepositFundsTest {
     private WebDriver driver;
     private CustomerLoginPage loginPage;
-    private DepositFundsPage depositFundsPage;
+    private CustomerDepositFundsPage depositFundsPage;
 
     @BeforeMethod
     public void setUp() {
@@ -46,7 +46,7 @@ public class DepositFundsTest {
         // Initialize page objects
         loginPage = new CustomerLoginPage(driver);
 
-        depositFundsPage = new DepositFundsPage(driver);
+        depositFundsPage = new CustomerDepositFundsPage(driver);
     }
 
     @Test(priority = 1, description = "Test login and deposit funds in one flow")

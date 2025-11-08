@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 
-public class DepositFundsPage {
+public class CustomerDepositFundsPage {
 
     private WebDriver driver;
     private WebDriverWait wait;
@@ -28,7 +28,7 @@ public class DepositFundsPage {
     private WebElement confirmButton;
 
     // Constructor
-    public DepositFundsPage(WebDriver driver) {
+    public CustomerDepositFundsPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
