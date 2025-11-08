@@ -9,12 +9,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 
-public class DepositFunds {
+public class DepositFundsPage {
 
     private WebDriver driver;
     private WebDriverWait wait;
 
     // Web Elements
+    @FindBy(css = "div[data-action='deposit'] p")
+    private WebElement depositFundsCardButton;
+
     @FindBy(css = "#transaction-amount")
     private WebElement amountField;
 
@@ -25,10 +28,15 @@ public class DepositFunds {
     private WebElement confirmButton;
 
     // Constructor
-    public DepositFunds(WebDriver driver) {
+    public DepositFundsPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
+    }
+
+    public void depositFundsCard() {
+        wait.until(ExpectedConditions.elementToBeClickable(depositFundsCardButton));
+        depositFundsCardButton.click();
     }
 
     public void enterAmount(String amount) {
@@ -50,6 +58,7 @@ public class DepositFunds {
 
     // Complete deposit fund method
     public void depositFunds(String amount, String description) {
+        depositFundsCard();
         enterAmount(amount);
         enterDescription(description);
         clickConfirm();

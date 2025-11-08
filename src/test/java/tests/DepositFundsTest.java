@@ -8,13 +8,15 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.CustomerLoginPage;
+import pages.DepositFundsPage;
 import utils.ConfigReader;
 
 import java.time.Duration;
 
-public class CustomerLoginTest {
+public class DepositFundsTest {
     private WebDriver driver;
     private CustomerLoginPage loginPage;
+    private DepositFundsPage depositFundsPage;
 
     @BeforeMethod
     public void setUp() {
@@ -41,19 +43,24 @@ public class CustomerLoginTest {
         // Navigate to login page
         driver.get(ConfigReader.getProperty("base.url"));
 
-        // Initialize page object
+        // Initialize page objects
         loginPage = new CustomerLoginPage(driver);
+
+        depositFundsPage = new DepositFundsPage(driver);
     }
 
-    @Test(priority = 1, description = "Test successful login with valid credentials")
-    public void testSuccessfulLogin() {
+    @Test(priority = 1, description = "Test login and deposit funds in one flow")
+    public void testLoginAndDeposit() {
+        // Login first
         String email = ConfigReader.getProperty("email");
         String password = ConfigReader.getProperty("password");
-
         loginPage.login(email, password);
 
+        // Then deposit funds
+        String amount = "100";
+        String description = "Test Description";
+        depositFundsPage.depositFunds(amount, description);
     }
-
 
     @AfterMethod
     public void tearDown() {
