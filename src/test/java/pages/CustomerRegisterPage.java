@@ -15,19 +15,19 @@ public class CustomerRegisterPage {
     @FindBy(id = "register-btn")
     private WebElement registerButton;
 
-    @FindBy(id = "register-name")
+    @FindBy(css = "#register-name")
     private WebElement fullNameField;
 
-    @FindBy(id = "register-email")
+    @FindBy(css = "#register-email")
     private WebElement emailField;
 
-    @FindBy(id = "register-password")
+    @FindBy(css = "#register-password")
     private WebElement passwordField;
 
-    @FindBy(id = "initial-deposit")
+    @FindBy(css = "#initial-deposit")
     private WebElement initialDepositField;
 
-    @FindBy(id = "do-register")
+    @FindBy(css = "#do-register")
     private WebElement doRegisterButton;
 
     // Constructor

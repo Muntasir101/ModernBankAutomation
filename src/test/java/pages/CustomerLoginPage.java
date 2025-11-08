@@ -17,20 +17,15 @@ public class CustomerLoginPage {
     @FindBy(id = "login-btn")
     private WebElement signInButton;
 
-    @FindBy(id = "login-email")
+    @FindBy(css = "#login-email")
     private WebElement emailField;
 
-    @FindBy(id = "login-password")
+    @FindBy(css = "#login-password")
     private WebElement passwordField;
 
-    @FindBy(id = "do-login")
+    @FindBy(css = "#do-login")
     private WebElement loginButton;
 
-    @FindBy(className = "error-message")
-    private WebElement errorMessage;
-
-    @FindBy(className = "success-message")
-    private WebElement successMessage;
 
     // Constructor
     public CustomerLoginPage(WebDriver driver) {
