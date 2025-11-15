@@ -56,7 +56,46 @@ public class CustomerRegisterTest {
 
         registerPage.register(fullName, uniqueEmail, password, initialDepositAmount);
 
-        // Verify successful register
+    }
+
+    @Test(priority = 2, description = "Test Invalid Register with blank Name")
+    public void testInvalidRegisterWithBlankName() {
+        String baseEmail = ConfigReader.getProperty("email");
+        String uniqueEmail = baseEmail.split("@")[0]
+                + System.currentTimeMillis()
+                + "@" + baseEmail.split("@")[1];
+
+        String password = ConfigReader.getProperty("password");
+        String fullName =  "";
+        String initialDepositAmount =  ConfigReader.getProperty("deposit_amount");
+
+        registerPage.register(fullName, uniqueEmail, password, initialDepositAmount);
+
+    }
+
+    @Test(priority = 3, description = "Test Invalid Register with blank Email")
+    public void testInvalidRegisterWithBlankEmail() {
+        String uniqueEmail = "";
+        String password = ConfigReader.getProperty("password");
+        String fullName =  "Smith";
+        String initialDepositAmount =  ConfigReader.getProperty("deposit_amount");
+
+        registerPage.register(fullName, uniqueEmail, password, initialDepositAmount);
+
+    }
+
+    @Test(priority = 4, description = "Test Invalid Register with blank Email")
+    public void testInvalidRegisterWithBlankPassword() {
+        String baseEmail = ConfigReader.getProperty("email");
+        String uniqueEmail = baseEmail.split("@")[0]
+                + System.currentTimeMillis()
+                + "@" + baseEmail.split("@")[1];
+
+        String password = "";
+        String fullName =  "Smith";
+        String initialDepositAmount =  ConfigReader.getProperty("deposit_amount");
+
+        registerPage.register(fullName, uniqueEmail, password, initialDepositAmount);
 
     }
 
