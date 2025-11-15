@@ -8,15 +8,15 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.CustomerLoginPage;
-import pages.CustomerWithdrawFundsPage;
+import pages.CustomerTransferFundsPage;
 import utils.ConfigReader;
 
 import java.time.Duration;
 
-public class CustomerWithdrawFundsTest {
+public class CustomerTransferFundsTest {
     private WebDriver driver;
     private CustomerLoginPage loginPage;
-    private CustomerWithdrawFundsPage withdrawFundsPage;
+    private CustomerTransferFundsPage transferFundsPage;
 
     @BeforeMethod
     public void setUp() {
@@ -46,7 +46,7 @@ public class CustomerWithdrawFundsTest {
         // Initialize page objects
         loginPage = new CustomerLoginPage(driver);
 
-        withdrawFundsPage = new CustomerWithdrawFundsPage(driver);
+        transferFundsPage = new CustomerTransferFundsPage(driver);
     }
 
     @Test(priority = 1, description = "Test login and deposit funds in one flow")
@@ -56,10 +56,11 @@ public class CustomerWithdrawFundsTest {
         String password = ConfigReader.getProperty("password");
         loginPage.login(email, password);
 
-        // Then deposit funds
+        // Then transfer funds
         String amount = "100";
         String description = "Test Description";
-        withdrawFundsPage.withdrawFunds(amount, description);
+        String recipientEmail = "sarah@example.com";
+        transferFundsPage.transferFunds(amount,recipientEmail, description);
     }
 
     @AfterMethod

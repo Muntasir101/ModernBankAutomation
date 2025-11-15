@@ -34,7 +34,7 @@ public class CustomerWithdrawFundsPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void depositFundsCard() {
+    public void clickDepositFundsCard() {
         wait.until(ExpectedConditions.elementToBeClickable(withdrawFundsCardButton));
         withdrawFundsCardButton.click();
     }
@@ -58,7 +58,7 @@ public class CustomerWithdrawFundsPage {
 
     // Complete deposit fund method
     public void withdrawFunds(String amount, String description) {
-        depositFundsCard();
+        clickDepositFundsCard();
         enterAmount(amount);
         enterDescription(description);
         clickConfirm();

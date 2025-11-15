@@ -8,6 +8,7 @@
             <class name="tests.CustomerLoginTest"/>
             <class name="tests.CustomerDepositFundsTest"/>
             <class name="tests.CustomerWithdrawFundsTest"/>
+            <class name="tests.CustomerTransferFundsTest"/>
         </classes>
     </test>
 
