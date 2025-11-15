@@ -26,6 +26,9 @@ public class CustomerLoginPage {
     @FindBy(css = "#do-login")
     private WebElement loginButton;
 
+    @FindBy(css = "#notification")
+    private WebElement notification;
+
 
     // Constructor
     public CustomerLoginPage(WebDriver driver) {
@@ -57,8 +60,12 @@ public class CustomerLoginPage {
         loginButton.click();
     }
 
-    public boolean isLoginPageDisplayed() {
-        return emailField.isDisplayed() && passwordField.isDisplayed();
+    public String getSuccessMessage(){
+        return notification.getText();
+    }
+
+    public String getErrorMessage(){
+        return notification.getText();
     }
 
     // Complete login method
